@@ -95,6 +95,14 @@
     
     <url>
     
+      <loc>https://bapi24.github.io/resume/resume/</loc>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bapi24.github.io/tags/aws/</loc>
       <lastmod>2017-09-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -195,6 +203,15 @@
     <url>
     
       <loc>https://bapi24.github.io/publication_types/</loc>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bapi24.github.io/resume/</loc>
       <priority>0</priority>
     </url>
     
