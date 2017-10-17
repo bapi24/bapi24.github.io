@@ -45,11 +45,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://bapi24.github.io/project/aws-iot-button/">
+  <link rel="canonical" href="https://bapi24.github.io/post/setup-aws-cli-on-mac/">
 
   
 
-  <title>AWS IOT button | Bapi Loya</title>
+  <title>Setting up AWS cli on mac | Bapi Loya</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -132,56 +132,90 @@
 </nav>
 
 
-<article class="article article-project" itemscope itemtype="http://schema.org/Article">
+<article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 <div class="article-header">
-  <img src="/img/headers/aws-iot-button-header.jpeg" class="article-banner" itemprop="image">
-  <span class="article-header-caption">Hello World!!</span>
+  <img src="/img/headers/awscli.png" class="article-banner" itemprop="image">
+  
 </div>
 
 
 
   <div class="article-container">
+    <h1 itemprop="name">Setting up AWS cli on mac</h1>
+    
 
-    <div class="pub-title">
-      <h1 itemprop="name">AWS IOT button</h1>
-      <span class="pub-authors" itemprop="author">&nbsp;</span>
-      <span class="pull-right">
-        
+<div class="article-metadata">
+
+  <span class="article-date">
+    
+        Last updated on
+    
+    <time datetime="2017-10-11 00:00:00 -0500 CDT" itemprop="datePublished">
+      Oct 17, 2017
+    </time>
+  </span>
+
+  
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+
+  
+  
+  
+  <span class="article-tags">
+    <i class="fa fa-tags"></i>
+    
+    <a href="/tags/academic">academic</a
+    >, 
+    
+    <a href="/tags/hugo">hugo</a
+    >
+    
+  </span>
+  
+  
+
+  
+  
 <div class="share-box" aria-hidden="true">
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=AWS%20IOT%20button&amp;url=https%3a%2f%2fbapi24.github.io%2fproject%2faws-iot-button%2f"
+         href="https://twitter.com/intent/tweet?text=Setting%20up%20AWS%20cli%20on%20mac&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fsetup-aws-cli-on-mac%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fproject%2faws-iot-button%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fpost%2fsetup-aws-cli-on-mac%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fproject%2faws-iot-button%2f&amp;title=AWS%20IOT%20button"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fsetup-aws-cli-on-mac%2f&amp;title=Setting%20up%20AWS%20cli%20on%20mac"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fproject%2faws-iot-button%2f&amp;title=AWS%20IOT%20button"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fpost%2fsetup-aws-cli-on-mac%2f&amp;title=Setting%20up%20AWS%20cli%20on%20mac"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=AWS%20IOT%20button&amp;body=https%3a%2f%2fbapi24.github.io%2fproject%2faws-iot-button%2f">
+         href="mailto:?subject=Setting%20up%20AWS%20cli%20on%20mac&amp;body=https%3a%2f%2fbapi24.github.io%2fpost%2fsetup-aws-cli-on-mac%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -189,44 +223,108 @@
 </div>
 
 
-      </span>
-    </div>
+  
 
-    
+</div>
 
     <div class="article-style" itemprop="articleBody">
-      <p>Lets get Started!!!</p>
+      
 
+<h3 id="steps"><strong>Steps</strong>:</h3>
 
-<figure >
-    
-        <img src="/img/aws-iot-button.png" />
-    
-    
-    <figcaption>
-        <h4>example</h4>
-        
-    </figcaption>
-    
-</figure>
+<ul>
+<li>Install homebrew</li>
+<li>Install python3 using brew</li>
+<li>Install aws cli using brew</li>
+<li>Configure aws cli</li>
+<li>Test with simple script</li>
+</ul>
 
+<h4 id="install-homebrew"><strong>Install homebrew</strong></h4>
+
+<p><a href="https://brew.sh/" target="_blank">Homebrew</a> is package manager for Mac OS similar to apt-get for Ubuntu. To install homebrew, Paste the following at a terminal prompt:</p>
+
+<pre><code class="language-bash">/usr/bin/ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+</code></pre>
+
+<h4 id="check-brew-version"><strong>Check brew version:</strong></h4>
+
+<pre><code class="language-bash">$brew --version
+</code></pre>
+
+<h4 id="install-python3"><strong>Install python3</strong></h4>
+
+<p>Mac comes with python 2 installed, lets install python3 using homebrew</p>
+
+<pre><code class="language-bash">$brew install python3
+</code></pre>
+
+<h4 id="test-python"><strong>Test python</strong></h4>
+
+<p>To test python let us print a simple statement</p>
+
+<pre><code class="language-bash">$echo &quot;print(\&quot;hello world\&quot;)&quot; &gt;&gt; hello.py
+</code></pre>
+
+<blockquote>
+<p>make sure you run with python3</p>
+</blockquote>
+
+<pre><code class="language-bash">$python3 hello.py
+</code></pre>
+
+<h4 id="install-aws-cli"><strong>Install aws cli</strong></h4>
+
+<pre><code class="language-bash">$brew install awscli
+</code></pre>
+
+<h4 id="configure-aws-cli"><strong>Configure AWS cli</strong></h4>
+
+<pre><code class="language-bash">$aws configure --profile dev
+</code></pre>
+
+<h4 id="test-aws-cli"><strong>Test aws cli</strong></h4>
+
+<pre><code class="language-bash">$aws --version
+</code></pre>
 
     </div>
-
   </div>
+
 </article>
+
+
+
+<div class="article-container">
+  <h3>Related</h3>
+  <ul>
+    
+    <li><a href="/post/getting-started/">Getting started with the Academic framework for Hugo</a></li>
+    
+    <li><a href="/post/widgets/">Customizing the homepage with widgets</a></li>
+    
+    <li><a href="/post/managing-content/">Managing content</a></li>
+    
+  </ul>
+</div>
+
 
 <div class="container">
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://bapi24.github.io/project/example-external-project/"><span
-      aria-hidden="true">&larr;</span> External Project</a></li>
+    <li class="previous"><a href="https://bapi24.github.io/post/getting-started/"><span
+      aria-hidden="true">&larr;</span> Getting started with the Academic framework for Hugo</a></li>
     
 
     
   </ul>
 </nav>
+
+</div>
+
+<div class="article-container">
+  
 
 </div>
 
@@ -275,6 +373,13 @@
       <script>hljs.initHighlightingOnLoad();</script>
     
 
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 
