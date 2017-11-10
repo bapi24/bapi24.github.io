@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://bapi24.github.io/post/webscraping/</loc>
+      <lastmod>2017-11-06T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bapi24.github.io/post/setup-aws-cli-on-mac/</loc>
       <lastmod>2017-10-17T00:00:00-05:00</lastmod>
     </url>
@@ -107,6 +116,16 @@
     
     <url>
     
+      <loc>https://bapi24.github.io/tags/data-analytics/</loc>
+      <lastmod>2017-11-06T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bapi24.github.io/tags/demo/</loc>
       <lastmod>2016-04-27T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -149,6 +168,16 @@
     
       <loc>https://bapi24.github.io/project/</loc>
       <lastmod>2017-09-25T00:00:00+00:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
+      <loc>https://bapi24.github.io/tags/python/</loc>
+      <lastmod>2017-11-06T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     

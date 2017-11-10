@@ -17,6 +17,11 @@
     
   
   
+    
+    
+    <link rel="stylesheet" href="/css/highlight.min.css">
+    
+  
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha512-6MXa8B6uaO18Hid6blRMetEIoPqHf7Ux1tnyIQdpt9qI5OACx7C+O3IVTr98vwGnlcg0LOLa02i9Y1HpVhlfiw==" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.1/css/academicons.min.css" integrity="sha512-NThgw3XKQ1absAahW6to7Ey42uycrVvfNfyjqcFNgCmOCQ5AR4AO0SiXrN+8ZtYeappp56lk1WtvjVmEa+VR6A==" crossorigin="anonymous">
@@ -53,11 +58,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://bapi24.github.io/post/">
+  <link rel="canonical" href="https://bapi24.github.io/post/webscraping/">
 
   
 
-  <title>Posts | Bapi Loya</title>
+  <title>Webscraping using Python | Bapi Loya</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -140,27 +145,14 @@
 </nav>
 
 
-
-
-
-<div class="universal-wrapper">
-
-  <h1>Posts</h1>
+<article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
-  
-  
+
+  <div class="article-container">
+    <h1 itemprop="name">Webscraping using Python</h1>
     
-    
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://bapi24.github.io/post/webscraping/" itemprop="url">Webscraping using Python</a>
-  </h3>
-  
 
 <div class="article-metadata">
 
@@ -196,213 +188,142 @@
   
 
   
+  
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    <li>
+      <a class="twitter"
+         href="https://twitter.com/intent/tweet?text=Webscraping%20using%20Python&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fwebscraping%2f"
+         target="_blank">
+        <i class="fa fa-twitter"></i>
+      </a>
+    </li>
+    <li>
+      <a class="facebook"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fpost%2fwebscraping%2f"
+         target="_blank">
+        <i class="fa fa-facebook"></i>
+      </a>
+    </li>
+    <li>
+      <a class="linkedin"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fwebscraping%2f&amp;title=Webscraping%20using%20Python"
+         target="_blank">
+        <i class="fa fa-linkedin"></i>
+      </a>
+    </li>
+    <li>
+      <a class="weibo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fpost%2fwebscraping%2f&amp;title=Webscraping%20using%20Python"
+         target="_blank">
+        <i class="fa fa-weibo"></i>
+      </a>
+    </li>
+    <li>
+      <a class="email"
+         href="mailto:?subject=Webscraping%20using%20Python&amp;body=https%3a%2f%2fbapi24.github.io%2fpost%2fwebscraping%2f">
+        <i class="fa fa-envelope"></i>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+  
 
 </div>
 
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>In this tutorial let us see how to extract data from web using python</p>
-    
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>Let us see how to extract data from websites using python</p>
+
+<p><title> <b = 3> What is Webscraping? </b> </title>
+Web scraping is used to extract data and present it in a more readable format. In this tutorial we shall focus on xml data, but web scraping can be used in a wide variety of situations.</p>
+
+<h3 id="getting-started">Getting Started</h3>
+
+<p>Let us extract some data using python language and beautifulsoup4 library</p>
+
+<blockquote>
+<pre><code class="language-bash">note: the commands in this section can be run directly in terminal
+</code></pre>
+
+<p>to check version of python installed on your machine:</p>
+
+<pre><code class="language-bash">python --version
+</code></pre>
+
+<p>install beautifulsoup4 library using pip</p>
+
+<pre><code class="language-bash">pip install beautifulsoup4
+</code></pre>
+</blockquote>
+
+<h3 id="python-script">Python Script</h3>
+
+<p>Here is the Python script that hits the CTA(Chicago transit authority) bus API at <a href="http://ctabustracker.com/bustime/map/getStopPredictions.jsp?&amp;stop=14791&amp;route=22" target="_blank">CTA</a>
+We want to extract info from the xml data to check the bus arrival</p>
+
+<p>If there is a bus arriving in less than 2 mins, we print &ldquo;Almost here!!&rdquo; or if its less than 15 min we print &ldquo;Coming Soon!!&rdquo;  or else return &ldquo;Not anytime soon&rdquo;</p>
+
+<pre><code class="language-python">#import necessary libraries
+from bs4 import BeautifulSoup
+import requests
+import re
+
+resp = requests.get('http://ctabustracker.com/bustime/map/getStopPredictions.jsp?&amp;stop=14791&amp;route=22')
+#read xml data
+xml = resp.text
+#create BeautifulSoup object for xml
+soup = BeautifulSoup(xml, 'lxml')
+
+#filter cta arrivals by pt tag
+next_arrival = soup.pt
+
+#check if the bus is appproaching
+if next_arrival.text == 'APPROACHING':
+    print(&quot;Almost here!!&quot;)
+    next_arrival_time = 0
+else:
+    #extract number from the tag
+    next_arrival_time = int(re.search(r'\d+', next_arrival.text).group())
+
+    #check if the arrival is less than 15 min
+    if next_arrival_time &lt;= 15:  
+        print(&quot;Coming Soon!!&quot;)
+    else:
+         #return false for arrivals greater than 15 min
+        print(&quot;Not anytime soon!!&quot;)
+</code></pre>
+
+    </div>
   </div>
-  <p class="read-more">
-    <a href="https://bapi24.github.io/post/webscraping/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
+
+</article>
+
+
+
+
+<div class="container">
+  <nav>
+  <ul class="pager">
+    
+    <li class="previous"><a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/"><span
+      aria-hidden="true">&larr;</span> Setting up AWS cli on mac</a></li>
+    
+
+    
+  </ul>
+</nav>
+
 </div>
 
-  
-    
-    
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  
-  <a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/">
-    <img src="/img/headers/awscli.png" class="article-banner" itemprop="image">
-  </a>
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/" itemprop="url">Setting up AWS cli on mac</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-        Last updated on
-    
-    <time datetime="2017-10-11 00:00:00 -0500 CDT" itemprop="datePublished">
-      Oct 17, 2017
-    </time>
-  </span>
-
-  
-  <span class="article-reading-time">
-    1 min read
-  </span>
-  
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/academic">academic</a
-    >, 
-    
-    <a href="/tags/hugo">hugo</a
-    >
-    
-  </span>
-  
-  
-
+<div class="article-container">
   
 
 </div>
 
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>Lets set up AWS cli on mac</p>
-    
-  </div>
-  <p class="read-more">
-    <a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-  
-    
-    
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://bapi24.github.io/post/widgets/" itemprop="url">Customizing the homepage with widgets</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-    <time datetime="2016-04-19 00:00:00 -0500 CDT" itemprop="datePublished">
-      Apr 19, 2016
-    </time>
-  </span>
-
-  
-  <span class="article-reading-time">
-    3 min read
-  </span>
-  
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/academic">academic</a
-    >, 
-    
-    <a href="/tags/hugo">hugo</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>Enable/disable and configure widgets to customize your homepage.</p>
-    
-  </div>
-  <p class="read-more">
-    <a href="https://bapi24.github.io/post/widgets/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-  
-    
-    
-
-<div class="article-list-item" itemscope itemprop="blogPost">
-  
-  
-  <h3 class="article-title" itemprop="name">
-    <a href="https://bapi24.github.io/post/migrate-from-jekyll/" itemprop="url">Migrate from Jekyll to Hugo</a>
-  </h3>
-  
-
-<div class="article-metadata">
-
-  <span class="article-date">
-    
-    <time datetime="2014-03-10 00:00:00 -0500 CDT" itemprop="datePublished">
-      Mar 10, 2014
-    </time>
-  </span>
-
-  
-  <span class="article-reading-time">
-    2 min read
-  </span>
-  
-
-  
-
-  
-  
-  
-  <span class="article-tags">
-    <i class="fa fa-tags"></i>
-    
-    <a href="/tags/jekyll">jekyll</a
-    >
-    
-  </span>
-  
-  
-
-  
-
-</div>
-
-  <div class="article-style" itemprop="articleBody">
-    
-    <p>Learn how to migrate an existing website from Jekyll to Hugo.</p>
-    
-  </div>
-  <p class="read-more">
-    <a href="https://bapi24.github.io/post/migrate-from-jekyll/" class="btn btn-primary btn-outline">
-      CONTINUE READING
-    </a>
-  </p>
-</div>
-
-  
-
-  
-
-
-</div>
 <footer class="site-footer">
   <div class="container">
     <p class="powered-by">
@@ -436,7 +357,25 @@
 
     
     
+      
+      
+      <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js" integrity="sha256-/BfiIkHlHoVihZdc6TFuj7MmJ0TWcWsMXkeDFwhi0zw=" crossorigin="anonymous"></script>
+      
 
+      
+
+      
+
+      <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 
