@@ -58,11 +58,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://bapi24.github.io/post/migrate-from-jekyll/">
+  <link rel="canonical" href="https://bapi24.github.io/post/sample-cfn-stack/">
 
   
 
-  <title>Migrate from Jekyll to Hugo | Bapi Loya</title>
+  <title>Deploy EC2 using Sample CloudFormation stack | Bapi Loya</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -148,24 +148,29 @@
 <article class="article" itemscope itemtype="http://schema.org/Article">
 
   
+<div class="article-header">
+  <img src="/img/headers/AWS_lego_cropped.png" class="article-banner" itemprop="image">
+  
+</div>
+
 
 
   <div class="article-container">
-    <h1 itemprop="name">Migrate from Jekyll to Hugo</h1>
+    <h1 itemprop="name">Deploy EC2 using Sample CloudFormation stack</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
     
-    <time datetime="2014-03-10 00:00:00 -0500 CDT" itemprop="datePublished">
-      Mar 10, 2014
+    <time datetime="2017-12-04 00:00:00 -0600 CST" itemprop="datePublished">
+      Dec 4, 2017
     </time>
   </span>
 
   
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -177,7 +182,16 @@
   <span class="article-tags">
     <i class="fa fa-tags"></i>
     
-    <a href="/tags/jekyll">jekyll</a
+    <a href="/tags/cfn">cfn</a
+    >, 
+    
+    <a href="/tags/aws">aws</a
+    >, 
+    
+    <a href="/tags/cloudformation">CloudFormation</a
+    >, 
+    
+    <a href="/tags/ec2">ec2</a
     >
     
   </span>
@@ -190,35 +204,35 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Migrate%20from%20Jekyll%20to%20Hugo&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fmigrate-from-jekyll%2f"
+         href="https://twitter.com/intent/tweet?text=Deploy%20EC2%20using%20Sample%20CloudFormation%20stack&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fsample-cfn-stack%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fpost%2fmigrate-from-jekyll%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fpost%2fsample-cfn-stack%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fmigrate-from-jekyll%2f&amp;title=Migrate%20from%20Jekyll%20to%20Hugo"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2fsample-cfn-stack%2f&amp;title=Deploy%20EC2%20using%20Sample%20CloudFormation%20stack"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fpost%2fmigrate-from-jekyll%2f&amp;title=Migrate%20from%20Jekyll%20to%20Hugo"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fpost%2fsample-cfn-stack%2f&amp;title=Deploy%20EC2%20using%20Sample%20CloudFormation%20stack"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Migrate%20from%20Jekyll%20to%20Hugo&amp;body=https%3a%2f%2fbapi24.github.io%2fpost%2fmigrate-from-jekyll%2f">
+         href="mailto:?subject=Deploy%20EC2%20using%20Sample%20CloudFormation%20stack&amp;body=https%3a%2f%2fbapi24.github.io%2fpost%2fsample-cfn-stack%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -231,41 +245,135 @@
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      
+      <p>Let us launch a test ec2 instance using AWS  <a href="https://aws.amazon.com/cloudformation/" target="_blank">CloudFormation</a>. CloudFormation is an orchestration tool to provision infrastructure in AWS and makes your deployment much faster and easier. Although you can use config management tools like Ansible, puppet and Chef to deploy AWS services, there are some advantages using orchestration tools like CloudFormation and Terraform. <a href="https://blog.gruntwork.io/why-we-use-terraform-and-not-chef-puppet-ansible-saltstack-or-cloudformation-7989dad2865c" target="_blank">This</a> article explains in detail the differences between the two.</p>
 
-<p>Here are a few tips for migrating an existing website from Jekyll to Hugo. These tips can be applied in conjunction with following Hugo Academic&rsquo;s <a href="https://themes.gohugo.io/theme/academic/post/getting-started/" target="_blank">getting started guide</a>.</p>
+<p>To get started with CloudFormation, you can refer to these sample CloudFormation stacks  <a href="http://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-sample-templates.html" target="_blank">Sample CloudFormation stacks</a>.
+If you prefer working with YAML to JSON, you can make use of <a href="https://github.com/awslabs/aws-cfn-template-flip" target="_blank">cfn-flip</a> to convert JSON to YAML.</p>
 
-<h2 id="move-static-content-to-static">Move static content to <code>static</code></h2>
+<p>Below is the CloudFormation template to launch a test EC2 instance.</p>
 
-<p>Jekyll has a rule that any directory not starting with <code>_</code> will be copied as-is to the <code>_site</code> output. Hugo keeps all static content under <code>static</code>. You should therefore move it all there.
-With Jekyll, something that looked like</p>
+<pre><code class="language-yaml">
+AWSTemplateFormatVersion: '2010-09-09'
 
-<pre><code>▾ &lt;root&gt;/
-    ▾ images/
-        logo.png
+Description: 'This template shows how to associate an Elastic IP address with an Amazon EC2 instance
+  **WARNING** This template creates an Amazon EC2 instance and an Elastic IP Address.
+  You will be billed for the AWS resources used if you create a stack from this template.'
+
+Parameters:
+  InstanceType:
+    Description: WebServer EC2 instance type
+    Type: String
+    Default: t2.micro
+    AllowedValues:
+      - t1.micro
+      - t2.nano
+      - t2.micro
+      - t2.small
+      - t2.medium
+    ConstraintDescription: must be a valid EC2 instance type.
+  KeyName:
+    Description: Name of an existing EC2 KeyPair to enable SSH access to the instances
+    Type: AWS::EC2::KeyPair::KeyName
+    ConstraintDescription: must be the name of an existing EC2 KeyPair.
+    Default: baws.admin
+  SSHLocation:
+    Description: The IP address range that can be used to SSH to the EC2 instances
+    Type: String
+    MinLength: '9'
+    MaxLength: '18'
+    Default: 0.0.0.0/0
+    AllowedPattern: (\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})
+    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
+
+Mappings:
+  AWSInstanceType2Arch:
+    t1.micro:
+      Arch: PV64
+    t2.nano:
+      Arch: HVM64
+    t2.micro:
+      Arch: HVM64
+    t2.small:
+      Arch: HVM64
+    t2.medium:
+      Arch: HVM64
+
+  AWSInstanceType2NATArch:
+    t1.micro:
+      Arch: NATPV64
+    t2.nano:
+      Arch: NATHVM64
+    t2.micro:
+      Arch: NATHVM64
+    t2.small:
+      Arch: NATHVM64
+    t2.medium:
+      Arch: NATHVM64
+
+  AWSRegionArch2AMI:
+    us-east-1:
+      PV64: ami-2a69aa47
+      HVM64: ami-6869aa05
+      HVMG2: ami-1f12e965
+    us-west-2:
+      PV64: ami-7f77b31f
+      HVM64: ami-7172b611
+      HVMG2: ami-5c9b6124
+    us-west-1:
+      PV64: ami-a2490dc2
+      HVM64: ami-31490d51
+      HVMG2: ami-7291a112
+    us-east-2:
+      PV64: NOT_SUPPORTED
+      HVM64: ami-f6035893
+      HVMG2: NOT_SUPPORTED
+
+Resources:
+  EC2Instance:
+    Type: AWS::EC2::Instance
+    Properties:
+      UserData: !Base64
+        Fn::Join:
+          - ''
+          - - IPAddress=
+            - !Ref 'IPAddress'
+      InstanceType: !Ref 'InstanceType'
+      SecurityGroups:
+        - !Ref 'InstanceSecurityGroup'
+      KeyName: !Ref 'KeyName'
+      ImageId: !FindInMap [AWSRegionArch2AMI, !Ref 'AWS::Region', !FindInMap [AWSInstanceType2Arch,
+          !Ref 'InstanceType', Arch]]
+  InstanceSecurityGroup:
+    Type: AWS::EC2::SecurityGroup
+    Properties:
+      GroupDescription: Enable SSH access
+      SecurityGroupIngress:
+        - IpProtocol: tcp
+          FromPort: '22'
+          ToPort: '22'
+          CidrIp: !Ref 'SSHLocation'
+  IPAddress:
+    Type: AWS::EC2::EIP
+  IPAssoc:
+    Type: AWS::EC2::EIPAssociation
+    Properties:
+      InstanceId: !Ref 'EC2Instance'
+      EIP: !Ref 'IPAddress'
+
+Outputs:
+  InstanceId:
+    Description: InstanceId of the newly created EC2 instance
+    Value: !Ref 'EC2Instance'
+  InstanceIPAddress:
+    Description: IP address of the newly created EC2 instance
+    Value: !Ref 'IPAddress'
 </code></pre>
 
-<p>should become</p>
+<p>Once you have AWS cli set up(if not refer <a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/" target="_blank">this</a> you can create a CFN stack from above template using AWS cli:</p>
 
-<pre><code>▾ &lt;root&gt;/
-    ▾ static/
-        ▾ images/
-            logo.png
+<pre><code class="language-bash">aws cloudformation create-stack --stack-name test-instance \
+--template-body file://ec2-elastic-ip.yaml
 </code></pre>
-
-<p>Additionally, you&rsquo;ll want any files that should reside at the root (such as <code>CNAME</code>) to be moved to <code>static</code>.</p>
-
-<h2 id="fix-content">Fix content</h2>
-
-<p>Depending on the amount of customization that was done for each post in Jekyll, this step will require more or less effort. There are no hard and fast rules here except that <code>hugo server --watch</code> and the Hugo Academic example site are your friends. Test your changes and fix errors as needed.</p>
-
-<h2 id="publish">Publish</h2>
-
-<p>The default is for Jekyll to publish the website to a <code>_site</code> directory, whereas Hugo publishes to a <code>public</code> directory.</p>
-
-<h2 id="a-practical-example">A practical example</h2>
-
-<p>Alexandre Normand migrated his website from Jekyll to Hugo in less than a day. You can see all his changes by looking at this GitHub <a href="https://github.com/alexandre-normand/alexandre-normand/compare/869d69435bd2665c3fbf5b5c78d4c22759d7613a...b7f6605b1265e83b4b81495423294208cc74d610" target="_blank">diff</a>. However, bear in mind that this example is <strong>not specific to the Academic theme nor does it use the latest version of Hugo</strong>.</p>
 
     </div>
   </div>
@@ -279,10 +387,10 @@ With Jekyll, something that looked like</p>
   <nav>
   <ul class="pager">
     
-
+    <li class="previous"><a href="https://bapi24.github.io/post/webscraping/"><span
+      aria-hidden="true">&larr;</span> Webscraping using Python</a></li>
     
-    <li class="next"><a href="https://bapi24.github.io/post/widgets/">Customizing the homepage with widgets <span
-      aria-hidden="true">&rarr;</span></a></li>
+
     
   </ul>
 </nav>
@@ -362,6 +470,13 @@ With Jekyll, something that looked like</p>
       <script>hljs.initHighlightingOnLoad();</script>
     
 
+    
+    
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({ tex2jax: { inlineMath: [['$','$'], ['\\(','\\)']] } });
+    </script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS_CHTML" integrity="sha512-tOav5w1OjvsSJzePRtt2uQPFwBoHt1VZcUq8l8nm5284LEKE9FSJBQryzMBzHxY5P0zRdNqEcpLIRVYFNgu1jw==" crossorigin="anonymous"></script>
     
     
 
