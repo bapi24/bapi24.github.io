@@ -369,7 +369,7 @@ Outputs:
     Value: !Ref 'IPAddress'
 </code></pre>
 
-<p>Once you have AWS cli set up(if not refer <a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/" target="_blank">this</a> you can create a CFN stack from above template using AWS cli:</p>
+<p>Once you have AWS cli set up (if not refer <a href="https://bapi24.github.io/post/setup-aws-cli-on-mac/" target="_blank">this</a> ) you can create a CFN stack from above template using AWS cli:</p>
 
 <pre><code class="language-bash">aws cloudformation create-stack --stack-name test-instance \
 --template-body file://ec2-elastic-ip.yaml
