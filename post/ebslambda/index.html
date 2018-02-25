@@ -58,11 +58,11 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/apple-touch-icon.png">
 
-  <link rel="canonical" href="https://bapi24.github.io/post/aws-tags/">
+  <link rel="canonical" href="https://bapi24.github.io/post/ebslambda/">
 
   
 
-  <title>Working with AWS tags | Bapi Loya</title>
+  <title>Working with AWS Lambda | Bapi Loya</title>
 
 </head>
 <body id="top" data-spy="scroll" data-target="#navbar-main" data-offset="71">
@@ -149,28 +149,28 @@
 
   
 <div class="article-header">
-  <img src="/img/headers/tag.png" class="article-banner" itemprop="image">
+  <img src="/img/headers/EbsLambda.png" class="article-banner" itemprop="image">
   
 </div>
 
 
 
   <div class="article-container">
-    <h1 itemprop="name">Working with AWS tags</h1>
+    <h1 itemprop="name">Working with AWS Lambda</h1>
     
 
 <div class="article-metadata">
 
   <span class="article-date">
     
-    <time datetime="2018-02-04 00:00:00 -0600 CST" itemprop="datePublished">
-      Feb 4, 2018
+    <time datetime="2018-02-14 00:00:00 -0600 CST" itemprop="datePublished">
+      Feb 14, 2018
     </time>
   </span>
 
   
   <span class="article-reading-time">
-    2 min read
+    3 min read
   </span>
   
 
@@ -194,6 +194,12 @@
     <a href="/tags/ebs">EBS</a
     >, 
     
+    <a href="/tags/serverless">serverless</a
+    >, 
+    
+    <a href="/tags/lambda">lambda</a
+    >, 
+    
     <a href="/tags/ec2">ec2</a
     >
     
@@ -207,35 +213,35 @@
   <ul class="share">
     <li>
       <a class="twitter"
-         href="https://twitter.com/intent/tweet?text=Working%20with%20AWS%20tags&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2faws-tags%2f"
+         href="https://twitter.com/intent/tweet?text=Working%20with%20AWS%20Lambda&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2febslambda%2f"
          target="_blank">
         <i class="fa fa-twitter"></i>
       </a>
     </li>
     <li>
       <a class="facebook"
-         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fpost%2faws-tags%2f"
+         href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fbapi24.github.io%2fpost%2febslambda%2f"
          target="_blank">
         <i class="fa fa-facebook"></i>
       </a>
     </li>
     <li>
       <a class="linkedin"
-         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2faws-tags%2f&amp;title=Working%20with%20AWS%20tags"
+         href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3a%2f%2fbapi24.github.io%2fpost%2febslambda%2f&amp;title=Working%20with%20AWS%20Lambda"
          target="_blank">
         <i class="fa fa-linkedin"></i>
       </a>
     </li>
     <li>
       <a class="weibo"
-         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fpost%2faws-tags%2f&amp;title=Working%20with%20AWS%20tags"
+         href="http://service.weibo.com/share/share.php?url=https%3a%2f%2fbapi24.github.io%2fpost%2febslambda%2f&amp;title=Working%20with%20AWS%20Lambda"
          target="_blank">
         <i class="fa fa-weibo"></i>
       </a>
     </li>
     <li>
       <a class="email"
-         href="mailto:?subject=Working%20with%20AWS%20tags&amp;body=https%3a%2f%2fbapi24.github.io%2fpost%2faws-tags%2f">
+         href="mailto:?subject=Working%20with%20AWS%20Lambda&amp;body=https%3a%2f%2fbapi24.github.io%2fpost%2febslambda%2f">
         <i class="fa fa-envelope"></i>
       </a>
     </li>
@@ -248,81 +254,179 @@
 </div>
 
     <div class="article-style" itemprop="articleBody">
-      <p><a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html" target="_blank">Tagging</a> your AWS resources helps you to manage your resources.It is useful when you have large number of resources of same type-where you can quickly identify a specific resource based on a tag. For example to identify jenkins dev instance in your ec2 fleet.</p>
+      
 
-<p>You can also edit or tags of your existing infrastructure.
-<img src="/img/tags/pic1.png" alt="Example image" /></p>
+<p><a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda</a> automatically runs your code without requiring you to manage any servers. With Lambda, you can run code for virtually any type of application or backend service - all with zero administration. Just upload your code and Lambda takes care of everything required to run and scale your code with high availability. You can set up your code to automatically trigger from other AWS services or call it directly from any web or mobile app. You pay only for the compute time you consume - there is no charge when your code is not running.</p>
 
-<p>Let us work on a problem we face when dealing with large number of ec2 instances. Most of the time we tend to ignore naming EBS volumes and go default settings while launching ec2 instances. It becomes a tedious task to keep track of those volumes at enterprise level. Lets solve that using AWS tagging where we tag EBS volumes to keep track of them.</p>
+<p>In my <a href="https://bapi24.github.io/post/aws-tags/" target="_blank">previous</a> post, we have worked tagging the <a href="https://aws.amazon.com/ebs/" target="_blank">EBS</a> volumes with the help of a python script. Now lets work on deploying that function through <a href="https://aws.amazon.com/lambda/" target="_blank">AWS Lambda</a> which gets triggered every 60 mins(customizable).</p>
 
-<p>I used a python script and leveraged <a href="https://boto3.readthedocs.io/en/latest/" target="_blank">Boto3 library</a> to filter the instances which are running and apply ec2 tags to corresponding EBS volumes.</p>
+<p>Before jumping into the code, lets see what are we trying to achieve here. We want to automate the task of appending our <a href="https://aws.amazon.com/ec2/" target="_blank">EC2</a> tags on the corresponding EBS volumes on regular intervals of time, to help us keep the EBS volumes organized.</p>
 
-<pre><code class="language-python">from __future__ import print_function
+<p><img src="/img/lambda/lambda_a.png" alt="Working with Lambda" /></p>
 
-import boto3
-import json
-import logging
+<h3 id="steps"><strong>STEPS</strong>:</h3>
 
-#setup simple logging for INFO
-logger = logging.getLogger()
-logger.setLevel(logging.ERROR)
+<ul>
+<li>We need to give access to Lambda function(L) to talk to EC2 instances(E) and Cloudwatch Log groups(CL).</li>
+</ul>
 
-#define the connection for EC2
-ec2 = boto3.resource('ec2', region_name=&quot;us-east-2&quot;)
+<pre><code class="language-yaml">AWSTemplateFormatVersion: '2010-09-09'
 
-def tag_them(instance, detail):
-    tempTags=[]
-    v={}
+Description: Create IAM roles and policies to tag EBS volumes based on EC2 tags
 
-    for t in instance.tags:
-        #pull the name tag and add volume detail
-        if t['Key'] == 'Name':
-            v['Value'] = t['Value'] + &quot; - &quot; + str(detail)
-            v['Key'] = 'Name'
-            tempTags.append(v)
-        #append the wanted tags to EBS
-        elif t['Key'] == 'Owner':
-            print(&quot;[INFO]: Owner tag &quot; + str(t))
-            tempTags.append(t)
-        elif t['Key'] == 'Environment':
-            print(&quot;[INFO]: Environment Tag &quot; + str(t))
-            tempTags.append(t)
-        else:
-            print(&quot;[INFO]: Skip Tag - &quot; + str(t))
+Resources:
+  EbsLambdaServiceRole:
+    Type: &quot;AWS::IAM::Role&quot;
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: &quot;2012-10-17&quot;
+        Statement:
+          -
+            Effect: &quot;Allow&quot;
+            Principal:
+              Service:
+                - &quot;lambda.amazonaws.com&quot;
+            Action:
+              - &quot;sts:AssumeRole&quot;
+      Path: &quot;/&quot;
+      ManagedPolicyArns:
+        - !Ref EbsLambdaEC2Policy
+        - !Ref EbsLambdaLogPolicy
+      RoleName: EbsLambdaServiceRole
 
-    print(&quot;[INFO] &quot; + str(tempTags))
-    return(tempTags)
+EbsLambdaEC2Policy:
+  Type: &quot;AWS::IAM::ManagedPolicy&quot;
+  Properties:
+    Description: &quot;Managed Policy to grant Lambda permissions to access EC2 for EBS tags&quot;
+    Path: &quot;/&quot;
+    PolicyDocument:
+      Version: &quot;2012-10-17&quot;
+      Statement:
+        -
+          Sid: &quot;AllowLambdaToAccessEC2&quot;
+          Effect: &quot;Allow&quot;
+          Action:
+            - ec2:* #ec2:Describe* #TO-DO: check for permissions
+          # Condition:
+          #   &quot;StringEquals&quot;:
+          #     - ec2:ResourceTag
+          Resource: &quot;*&quot; #arn:aws:ec2:us-east-1:&quot;acc-no&quot;:instance/*
+    ManagedPolicyName: EbsLambdaEC2Policy
 
-base_instances = ec2.instances.filter(
-    Filters = [
-                {
-                    'Name': 'instance-state-name',
-                    'Values': ['running']
-                },
-                {
-                    'Name': 'tag:Name',
-                    'Values': ['Jenkins Server']
-                },
+EbsLambdaLogPolicy:
+  Type: AWS::IAM::ManagedPolicy
+  Properties:
+    Description: &quot;Managed Policy to give access to Lambda to create logs in cloudwatch&quot;
+    Path: &quot;/&quot;
+    PolicyDocument:
+      Version: &quot;2012-10-17&quot;
+      Statement:
+       -
+         Sid: &quot;AllowLambdaToCreateLogs&quot;
+         Effect: Allow
+         Action:
+           - logs:*
+         Resource: &quot;*&quot;
+    ManagedPolicyName: EbsLambdaLogPolicy
+</code></pre>
 
-            ]
-)
+<ul>
+<li>We need to trigger the lambda function(L) from the Cloudwatch events(CE) in regular intervals using <a href="https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html" target="_blank">ScheduledRule</a> and give Cloudwatch Events permission to <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-permission.html" target="_blank">invoke Lambda</a>.</li>
+</ul>
 
-for instance in base_instances:
-    for vol in instance.volumes.all():
-        tag = vol.create_tags(Tags=tag_them(instance, vol.attachments[0]['Device']))
-        print(&quot;[INFO]: &quot; + str(tag))
+<pre><code class="language-yaml">ScheduledRule:
+  Type: &quot;AWS::Events::Rule&quot;
+  Properties:
+    Description: &quot;AWS Rule to run the function in specific intervals&quot;
+    ScheduleExpression: &quot;rate(60 minutes)&quot;
+    State: &quot;ENABLED&quot;
+    Targets:
+      - Arn: !GetAtt lambdaEbsFunction.Arn
+        Id: &quot;TargetFunctionV1&quot;
+
+PermissionForEventsToInvokeLambda:
+  Type: &quot;AWS::Lambda::Permission&quot;
+  Properties:
+    FunctionName: !GetAtt lambdaEbsFunction.Arn
+    Action: &quot;lambda:InvokeFunction&quot;
+    Principal: &quot;events.amazonaws.com&quot;
+    SourceArn:
+      Fn::GetAtt:
+        - ScheduledRule
+        - &quot;Arn&quot;
+</code></pre>
+
+<ul>
+<li>Create a Lambda function that <a href="https://bapi24.github.io/post/aws-tags/" target="_blank">tags EBS volumes of the corresponding EC2 instances</a> (which we worked on our previous post) through a cloudformation script</li>
+</ul>
+
+<pre><code class="language-YAML">lambdaEbsFunction:
+  Type: &quot;AWS::Lambda::Function&quot;
+  Properties:
+    Code:
+      ZipFile: |
+        #!/usr/bin/env python
+        from __future__ import print_function
+        import boto3
+        import json
+        import logging
+
+        #setup simple logging for INFO.
+        logger = logging.getLogger()
+        logger.setLevel(logging.ERROR)
+
+        #define the connection for EC2.
+        ec2 = boto3.resource('ec2', region_name=&quot;us-east-2&quot;)
+        def lambda_handler(event, context):
+          def tag_them(instance, detail):
+              tempTags=[]
+              v={}
+
+              for t in instance.tags:
+                  #pull the name tag and add volume detail
+                  if t['Key'] == 'Name':
+                      v['Value'] = t['Value'] + &quot; - &quot; + str(detail)
+                      v['Key'] = 'Name'
+                      tempTags.append(v)
+                  #append the wanted tags to EBS
+                  elif t['Key'] == 'Owner':
+                      print(&quot;[INFO]: Owner tag &quot; + str(t))
+                      tempTags.append(t)
+                  elif t['Key'] == 'Environment':
+                      print(&quot;[INFO]: Environment Tag &quot; + str(t))
+                      tempTags.append(t)
+                  else:
+                      print(&quot;[INFO]: Skip Tag - &quot; + str(t))
+
+              print(&quot;[INFO] &quot; + str(tempTags))
+              return(tempTags)
+
+          base_instances = ec2.instances.filter(
+              Filters = [
+
+                          {
+                              'Name': 'tag:Name',
+                              'Values': ['Jenkins Server']
+                          },
+
+                      ]
+          )
+
+          for instance in base_instances:
+              for vol in instance.volumes.all():
+                  tag = vol.create_tags(Tags=tag_them(instance, vol.attachments[0]['Device']))
+                  print(&quot;[INFO]: &quot; + str(tag))
+
+    Description: &quot;Function to add tags to EBS&quot;
+    FunctionName: !Ref lambdaFunctionName
+    Handler: &quot;index.lambda_handler&quot;
+    Role: &quot;arn:aws:iam::123456789:role/EbsLambdaServiceRole&quot; #TODO: account number hard-coded
+    Runtime: &quot;python3.6&quot;
+    Timeout: 5
 
 </code></pre>
 
-<p>Lets go behind the scenes and check how it works through AWS console!
-<img src="/img/tags/pic2.png" alt="pic 2" />
-<img src="/img/tags/pic3.png" alt="pic 3" />
-<img src="/img/tags/pic4.png" alt="pic 4" /></p>
-
-<p>You can follow these practices to get started with tagging:
-<a href="https://aws.amazon.com/answers/account-management/aws-tagging-strategies/" target="_blank">https://aws.amazon.com/answers/account-management/aws-tagging-strategies/</a></p>
-
-<p>Lets setup a <a href="https://aws.amazon.com/lambda/" target="_blank">lambda function</a> in next post where it will run every one hour to apply tags to EBS volumes based on EC2 tags.</p>
+<p>You can get the complete CloudFormation scripts  <a href="https://github.com/bapi24/aws_labs/tree/master/serverless/ebstags/cfn" target="_blank">here</a>.</p>
 
     </div>
   </div>
@@ -334,6 +438,8 @@ for instance in base_instances:
 <div class="article-container">
   <h3>Related</h3>
   <ul>
+    
+    <li><a href="/post/aws-tags/">Working with AWS tags</a></li>
     
     <li><a href="/post/sample-cfn-stack/">Deploy EC2 using Sample CloudFormation stack</a></li>
     
@@ -347,13 +453,10 @@ for instance in base_instances:
   <nav>
   <ul class="pager">
     
-    <li class="previous"><a href="https://bapi24.github.io/post/sample-cfn-stack/"><span
-      aria-hidden="true">&larr;</span> Deploy EC2 using Sample CloudFormation stack</a></li>
+    <li class="previous"><a href="https://bapi24.github.io/post/aws-tags/"><span
+      aria-hidden="true">&larr;</span> Working with AWS tags</a></li>
     
 
-    
-    <li class="next"><a href="https://bapi24.github.io/post/ebslambda/">Working with AWS Lambda <span
-      aria-hidden="true">&rarr;</span></a></li>
     
   </ul>
 </nav>

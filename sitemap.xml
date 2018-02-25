@@ -5,6 +5,15 @@
     
     <url>
     
+      <loc>https://bapi24.github.io/post/ebslambda/</loc>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bapi24.github.io/post/aws-tags/</loc>
       <lastmod>2018-02-04T00:00:00-06:00</lastmod>
     </url>
@@ -96,7 +105,7 @@
     <url>
     
       <loc>https://bapi24.github.io/tags/aws/</loc>
-      <lastmod>2018-02-04T00:00:00-06:00</lastmod>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -126,7 +135,7 @@
     <url>
     
       <loc>https://bapi24.github.io/tags/boto3/</loc>
-      <lastmod>2018-02-04T00:00:00-06:00</lastmod>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -195,7 +204,7 @@
     <url>
     
       <loc>https://bapi24.github.io/tags/ebs/</loc>
-      <lastmod>2018-02-04T00:00:00-06:00</lastmod>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -205,7 +214,7 @@
     <url>
     
       <loc>https://bapi24.github.io/tags/ec2/</loc>
-      <lastmod>2018-02-04T00:00:00-06:00</lastmod>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
@@ -244,6 +253,16 @@
     
     <url>
     
+      <loc>https://bapi24.github.io/tags/lambda/</loc>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bapi24.github.io/project/</loc>
       <lastmod>2017-09-25T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -264,6 +283,16 @@
     
     <url>
     
+      <loc>https://bapi24.github.io/tags/serverless/</loc>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
+      <priority>0</priority>
+    </url>
+    
+  
+    
+    
+    <url>
+    
       <loc>https://bapi24.github.io/tags/</loc>
       <lastmod>2017-01-01T00:00:00+00:00</lastmod>
       <priority>0</priority>
@@ -275,7 +304,7 @@
     <url>
     
       <loc>https://bapi24.github.io/tags/tags/</loc>
-      <lastmod>2018-02-04T00:00:00-06:00</lastmod>
+      <lastmod>2018-02-14T00:00:00-06:00</lastmod>
       <priority>0</priority>
     </url>
     
